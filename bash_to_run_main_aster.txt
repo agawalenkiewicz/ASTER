@@ -1,0 +1,17 @@
+#!/bin/bash
+module load python #NOT #python3.5/canopy-2.1.3
+code=/home/users/mp877190/CODE/ASTER_code/main_reading_and_converting_hdf.py
+path=/glusterfs/surft/users/mp877190/data/datastore/EE/ASTER_L1T/hunterston/* 
+for f in $path ; 
+do echo This is the folder $f ; 
+[ -d $f ] && cd "$f" ; 
+filename=`find *.hdf` && echo This is the filename $filename ; 
+output=${filename:0:45} && echo This is output $output ; 
+python $code $filename $f $output ;
+cd .. ; 
+done
+
+filename = 1
+folder = 2
+output_name = 3
+
